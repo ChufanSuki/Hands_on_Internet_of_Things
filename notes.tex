@@ -1,0 +1,76 @@
+\documentclass[11 pt]{scrartcl}
+\usepackage[header, margin, koma, stylish]{chen}
+\usepackage{csquotes}
+\usepackage{caption}
+\usepackage{todonotes}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[l]{CS 161 Notes}
+\fancyhead[r]{Chufan Chen}
+\cfoot{\thepage}
+
+\newcommand{\tx}{\tilde{x}}
+\newcommand{\eq}{\text{eq}}
+\newcommand{\opt}{\text{opt}}
+\newcommand{\nz}{\text{nz}\,}
+\newcommand{\epi}{\text{epi}\;}
+
+\begin{document} 
+\title{\Large CS 498: Internet of Things}
+\author{\large Chufan Chen}
+\date{\large\today}
+
+\maketitle 
+
+\begin{center}
+\begin{displayquote}
+    \emph{"A good stock of examples, as large as possible, is indispensable for a thorough understanding of any concept, and when I want to learn something new, I make it my first job to build one."} \\ \begin{flushright} \emph{– Paul Halmos}.  \end{flushright}
+\end{displayquote}
+\begin{displayquote}
+    \emph{"Constrained optimization is the art of compromise between conflicting objectives."} \\ \begin{flushright} \emph{– William A. Dembski}.  \end{flushright}
+\end{displayquote}
+\end{center}
+
+
+\tableofcontents 
+
+\newpage
+
+\section{Week 1 Lectures: Computer Internetworking}
+\subsection{Week 1 Overview}
+The Internet of Things is amazing, but it's not like it's some completely new thing. The amazing devices and technologies being are made up of systems, protocols, and architectures that have been around for decades. So in order to understand IoT, it's important to understand some key pieces of the Internet.\newline
+In this week, we'll talk about the Internet, including how it works; how it is designed, its key protocols, and underlying services. We will also describe two example use cases and applications of IoT, some of the challenges they present, and mention how Internet technologies can be applied to solve these problems. After you get through these lectures, you'll have a good basic understanding of the Internet, which will serve as a strong foundation towards understanding the designs and architectures of IoT.
+Internet Architecture: Domain Name System (DNS), IP addresses, IP prefixes, Routing Tables, Router Interfaces, Ethernet, Inter- and Intra-domain routing, VLANs; Delivery models: Unicast/Broadcast/Multicast/Anycast.\newline
+Key Phrase/Concepts
+\itemnum
+    \ii OSI/TCP Stacks; 7-Layer model: Application, Presentation, Session, Transport, Networking, Datalink (MAC), Physical.
+
+    \ii IoT Protocols: Bluetooth, Bluetooth Low Energy (BLE), Zigbee, WiFi Halow, LoRa, LTE-M, NB-IoT. 
+
+    \ii IoT Applications: Environmental monitoring, Smart homes/buildings/cities.
+\itemend
+\subsection{Background: How the Internet Works}
+\begin{enumerate}
+    \ii Internet Architecture
+    \ii Networking Routing
+    \ii Network Devices
+\end{enumerate}
+\textbf{How Can Two Hosts Communicate?}\newline
+Connect these hosts together witgh a wire, and then we can modulate properties of this wire to send information. We can take text, or images, or video, and encode it in series of ones and zeros, and then we can encode those ones and zeros as voltage changes on the wire. We can seem a high voltage for a one, a low voltage for a zero. So we can send pulses of electricity over the wire, and the other site can decode the message by receiving these pulses and figure out if the other side is sending a one or a zero.  Now it turns out, this isn't the most efficient way to send information. We can send pulses for ones and no pulses for zeros to send information, we could do that. But it turns out due to certain reasons and we'll get into these reasons later, it's more efficient to send a continuous signal called a \textbf{carrier signal}, a continuous sine wave and then very properties of that sine wave to send information. So in particular, we can change the phase or the frequency of their amplitude, properties of that sine wave signal to send information. By doing this, we can get higher bandwidths and this is how real protocols work. We can send signals over copper, over some conductor, we can also make wires that transmit light. We can actually send pulses of light to send information that's called the optical cable. We can use air which is wireless.\newline
+\textbf{How Can Many Hosts Communicate?}\newline
+Naive apporach: Full mesh, This is a topology where all pairs of hosts are interconnected. Problem: Full mesh do exist in the Internet. There are certain places where you need very tight coupling inside of data centers or ISPs, you need a lot of resilience. Those are the cases were you use full mesh topologies, but there's no way you would use it in the white area to build the entire Internet, is \textbf{not very scalable}. Better approach: Multiplex traffic with routers. Goals: make network robust to failures and attack, maintain spare capacity, reduce operational costs. New challenges: What topology to use? How to find paths? How to identify destinations? 
+\itemnum
+    \ii Hosts assigned topology-dependent addresses
+    \ii Routers advertise address blocks("prefixed")
+    \ii Routers compute "shortest" paths to prefixes
+    \ii Map IP addresses to names with DNS
+\itemend
+\textbf{What is a Protocol?}
+\section{Appendix}
+\renewcommand{\listtheoremname}{List of Definitions and Theorems}
+\listoftheorems[ignoreall,show={theorem,definition}]
+
+\listoftodos
+
+\end{document}
